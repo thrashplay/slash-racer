@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour, IPlayerCrashedListener
 {
@@ -40,6 +41,10 @@ public class GameController : MonoBehaviour, IPlayerCrashedListener
         if (playerLives.Value >= 0)
         {
             _respawner.Respawn(player.Position.y);
+        }
+        else
+        {
+            SceneManager.LoadScene("TitleScene");
         }
     }
 }
