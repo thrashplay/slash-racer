@@ -51,6 +51,13 @@ public class Player : MonoBehaviour, IPlayerController
     {
         if (collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Obstacle"))
         {
+            // destroy any obstacles the player crashes into
+            if (collision.gameObject.CompareTag("Obstacle"))
+            {
+                Destroy(collision.gameObject);
+            }
+
+            // handle the crash            
             OnCrashed();
         }
     }
