@@ -26,9 +26,10 @@ public class GameController : MonoBehaviour, IPlayerCrashedListener
         _respawner.Respawn(0);
     }
 
-    // Update is called once per frame
-    void Update()
+    // called when the player quits the game
+    public void OnQuit()
     {
+        SceneManager.LoadScene("TitleScene");
     }
 
     //
