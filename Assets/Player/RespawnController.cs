@@ -12,7 +12,9 @@ public class RespawnController : MonoBehaviour, IPlayerRespawner
 {
     public GameObject playerPrefab;
 
-    public float respawnDelay = 3;
+    public float respawnDelay = 3F;
+
+    public UiManager uiManager;
 
     // timestamp at which the player should be spawned
     private float respawnTime = float.MaxValue;
@@ -38,5 +40,7 @@ public class RespawnController : MonoBehaviour, IPlayerRespawner
     {
         spawnY = progress;
         respawnTime = Time.realtimeSinceStartup + respawnDelay;
+
+        uiManager.Announce("Get Ready!", respawnDelay * 0.75F);
     }
 }

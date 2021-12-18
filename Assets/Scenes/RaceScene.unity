@@ -248,7 +248,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 1039451815972288942, guid: 7236a6a4d22e3c787ae36f4f50912335, type: 3}
-  respawnDelay: 3
+  respawnDelay: 1.1
+  uiManager: {fileID: 1489404216}
 --- !u!114 &121091851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1109,6 +1110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9c0959505209fd1c9a02c1d2fa7dc14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fadingTextPrefab: {fileID: 2249148350416378131, guid: 2c9dc9b843ed38914833fc084dfb4221, type: 3}
   lives: {fileID: 11400000, guid: 42bfaa84df5dccbae99d174f5ef6ad16, type: 2}
   score: {fileID: 11400000, guid: 57b3529ac9b9f90f9bd26c5c0402fe69, type: 2}
   livesText: {fileID: 17549522}
