@@ -5,7 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour, IPlayerCrashedListener
 {
-    public int initialPlayerLives = 3;
+    public int initialPlayerLives = 2;
+
+    public BooleanValue isPaused;
 
     public IntegerValue playerLives;
 
@@ -24,12 +26,34 @@ public class GameController : MonoBehaviour, IPlayerCrashedListener
 
         _respawner = GetComponent<IPlayerRespawner>();
         _respawner.Respawn(0);
+
+        // start unpaused by default
+        Time.timeScale = 1;
+        isPaused.Value = false;
+    }
+
+    public void OnPause()
+    {
+        if (Time.timeScale != 0)
+        {
+            Time.timeScale = 0;
+            isPaused.Value = true;
+        }
+    }
+
+    public void OnUnpause()
+    {
+        if (Time.timeScale != 1) 
+        {
+            Time.timeScale = 1;
+            isPaused.Value = false;
+        }
     }
 
     // called when the player quits the game
-    public void OnQuit()
+    public void OnGameOver()
     {
-        SceneManager.LoadScene("TitleScene");
+        SceneManager.LoadScene("GameOverScene");
     }
 
     //
@@ -45,7 +69,7 @@ public class GameController : MonoBehaviour, IPlayerCrashedListener
         }
         else
         {
-            SceneManager.LoadScene("TitleScene");
+            OnGameOver();
         }
     }
 }

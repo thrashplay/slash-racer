@@ -14,11 +14,6 @@ public class PauseMenu : MonoBehaviour
     void Start()
     {
         pauseObjects = GameObject.FindGameObjectsWithTag("ShowOnPaused");
-
-        // start unpaused by default
-        Time.timeScale = 1;
-        SetMenuVisible(false);
-        isPaused.Value = false;
     }
 
     void Update()
@@ -27,40 +22,25 @@ public class PauseMenu : MonoBehaviour
         {
             if (Time.timeScale == 1)
 			{
-				OnPause();
+				gameController.OnPause();
 			} 
             else if (Time.timeScale == 0) 
             {
-                OnUnpause();
+                gameController.OnUnpause();
 			}
         }
+
+        SetMenuVisible(isPaused.Value);
     }
 
-    public void OnExit()
+    public void OnExitPressued()
     {
-        gameController.OnQuit();
+        gameController.OnGameOver();
     }
 
-    public void OnPause()
+    public void OnResumePressed()
     {
-        if (Time.timeScale != 0)
-        {
-            Time.timeScale = 0;
-            SetMenuVisible(true);
-
-            isPaused.Value = true;
-        }
-    }
-
-    public void OnUnpause()
-    {
-        if (Time.timeScale != 1) 
-        {
-            Time.timeScale = 1;
-            SetMenuVisible(false);
-
-            isPaused.Value = false;
-        }
+        gameController.OnUnpause();
     }
 
     private void SetMenuVisible(bool visible)
