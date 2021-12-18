@@ -4,29 +4,29 @@ using UnityEngine;
 
 public class ObstacleSpawner : MonoBehaviour
 {
-    public float frequency = 5;
+    public float frequency = 10;
 
     public GameObject obstaclePrefab;
 
     public float maxX = 10;
     public float minX = -10;
 
-    private float _timeAccumulator;
+    private float _lastSpawn;
 
     // Start is called before the first frame update
     void Start()
     {
-        _timeAccumulator = 0;    
+        _lastSpawn = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        _timeAccumulator += Time.deltaTime;
+        float top = Camera.main.ScreenToWorldPoint(new Vector3(Camera.main.pixelWidth, Camera.main.pixelHeight, 0)).y;
 
-        if (_timeAccumulator >= frequency)
+        if (top - _lastSpawn >= frequency)
         {
-            _timeAccumulator = 0;
+            _lastSpawn = top;
             SpawnObstacle();
         }
     }
