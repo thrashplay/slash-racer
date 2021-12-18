@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class LaneShiftInputController : MonoBehaviour
 {
+    public BooleanValue isPaused;
+
     public float laneWidth = 0.6F;
 
     private float _laneTarget;
@@ -19,6 +21,11 @@ public class LaneShiftInputController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isPaused.Value)
+        {
+            return;
+        }
+
         if (Input.GetMouseButtonDown(0))
         {
             OnLeftPressed();

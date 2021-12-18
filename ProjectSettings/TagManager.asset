@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Obstacle
   - Wall
+  - ShowOnPaused
   layers:
   - Default
   - TransparentFX

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MousePointerSteeringInputController : MonoBehaviour
 {
+    public BooleanValue isPaused;
+
     private IPlayerController _player;
 
     void Start()
@@ -14,6 +16,11 @@ public class MousePointerSteeringInputController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isPaused.Value)
+        {
+            return;
+        }
+
         // get the mouse click position, in world units
         var mousePosition = Camera.main.ScreenToWorldPoint(
             Input.mousePosition
