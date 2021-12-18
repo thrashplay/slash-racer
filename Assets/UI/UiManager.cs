@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class UiManager : MonoBehaviour
 {
+    public GameObject fadingTextPrefab;
+
     public IntegerValue lives;
 
     public IntegerValue score;
@@ -23,5 +25,14 @@ public class UiManager : MonoBehaviour
     {
         livesText.text = "Lives: " + lives.Value;
         scoreText.text = "Score: " + score.Value;
+    }
+
+    // show an announcement in the center of the screen
+    public void Announce(string message, float time = 1.0F)
+    {
+        var text = Instantiate(fadingTextPrefab, transform);
+        var script = text.GetComponent<FadingText>();
+        script.message = message;
+        script.fadeTime = time;
     }
 }
