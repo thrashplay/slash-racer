@@ -262,6 +262,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialPlayerLives: 3
+  isPaused: {fileID: 11400000, guid: 6bbf8fcc2eca96b4eb8ecc6870c0fcb9, type: 2}
   playerLives: {fileID: 11400000, guid: 42bfaa84df5dccbae99d174f5ef6ad16, type: 2}
   playerCrashedEvent: {fileID: 11400000, guid: b8db27aa2a2aecd2f9ae84a704da056b, type: 2}
   score: {fileID: 11400000, guid: 57b3529ac9b9f90f9bd26c5c0402fe69, type: 2}
@@ -429,7 +430,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1489404215}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: OnExit
+        m_MethodName: OnExitPressued
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -853,7 +854,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1489404215}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: OnUnpause
+        m_MethodName: OnResumePressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
