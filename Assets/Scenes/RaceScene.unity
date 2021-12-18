@@ -261,7 +261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4c2a86f021a934a0b6afe1bf0faf9ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialPlayerLives: 3
+  initialPlayerLives: 2
   isPaused: {fileID: 11400000, guid: 6bbf8fcc2eca96b4eb8ecc6870c0fcb9, type: 2}
   playerLives: {fileID: 11400000, guid: 42bfaa84df5dccbae99d174f5ef6ad16, type: 2}
   playerCrashedEvent: {fileID: 11400000, guid: b8db27aa2a2aecd2f9ae84a704da056b, type: 2}
