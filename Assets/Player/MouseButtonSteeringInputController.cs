@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MouseButtonSteeringInputController : MonoBehaviour
 {
+    public BooleanValue isPaused;
+
     private IPlayerController _player;
 
     void Start()
@@ -14,6 +16,11 @@ public class MouseButtonSteeringInputController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isPaused.Value)
+        {
+            return;
+        }
+        
         if (Input.GetMouseButton(0))
         {
             _player.SteerLeft();

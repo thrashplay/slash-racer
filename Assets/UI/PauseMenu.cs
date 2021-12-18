@@ -7,6 +7,8 @@ public class PauseMenu : MonoBehaviour
 {
     public GameController gameController;
 
+    public BooleanValue isPaused;
+
     private GameObject[] pauseObjects;
 
     void Start()
@@ -16,6 +18,7 @@ public class PauseMenu : MonoBehaviour
         // start unpaused by default
         Time.timeScale = 1;
         SetMenuVisible(false);
+        isPaused.Value = false;
     }
 
     void Update()
@@ -44,6 +47,8 @@ public class PauseMenu : MonoBehaviour
         {
             Time.timeScale = 0;
             SetMenuVisible(true);
+
+            isPaused.Value = true;
         }
     }
 
@@ -53,6 +58,8 @@ public class PauseMenu : MonoBehaviour
         {
             Time.timeScale = 1;
             SetMenuVisible(false);
+
+            isPaused.Value = false;
         }
     }
 

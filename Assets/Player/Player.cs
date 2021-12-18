@@ -27,6 +27,7 @@ public class Player : MonoBehaviour, IPlayerController
 
     void Start()
     {
+        Direction = SteeringDirection.Straight;
         _rigidbody = GetComponent<Rigidbody2D>();
         _position = _rigidbody.position;
     }
