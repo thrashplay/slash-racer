@@ -35,7 +35,7 @@ public class PauseMenu : MonoBehaviour
 
     public void OnExitPressued()
     {
-        gameController.OnQuit();
+        gameController.OnGameOver();
     }
 
     public void OnResumePressed()

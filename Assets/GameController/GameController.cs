@@ -51,9 +51,9 @@ public class GameController : MonoBehaviour, IPlayerCrashedListener
     }
 
     // called when the player quits the game
-    public void OnQuit()
+    public void OnGameOver()
     {
-        SceneManager.LoadScene("TitleScene");
+        SceneManager.LoadScene("GameOverScene");
     }
 
     //
@@ -69,7 +69,7 @@ public class GameController : MonoBehaviour, IPlayerCrashedListener
         }
         else
         {
-            SceneManager.LoadScene("TitleScene");
+            OnGameOver();
         }
     }
 }
