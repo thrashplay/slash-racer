@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour, IPlayerCrashedListener
 {
-    public int initialPlayerLives = 3;
+    public int initialPlayerLives = 2;
 
     public BooleanValue isPaused;
 
