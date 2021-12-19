@@ -17,7 +17,7 @@ public class Player : MonoBehaviour, IPlayerController
 
     public IntegerValue score;
 
-    public float steeringSpeed = 1;
+    public IntegerValue steeringSpeed;
 
     public SteeringDirection Direction { get; set; }
 
@@ -66,8 +66,8 @@ public class Player : MonoBehaviour, IPlayerController
     {
         return Direction switch
         {
-            SteeringDirection.Left => -steeringSpeed,
-            SteeringDirection.Right => steeringSpeed,
+            SteeringDirection.Left => -steeringSpeed.Value,
+            SteeringDirection.Right => steeringSpeed.Value,
             _ => 0,
         };
     }

@@ -140,7 +140,7 @@ MonoBehaviour:
   DrivingSpeed: 8
   playerCrashedEvent: {fileID: 11400000, guid: b8db27aa2a2aecd2f9ae84a704da056b, type: 2}
   score: {fileID: 11400000, guid: 57b3529ac9b9f90f9bd26c5c0402fe69, type: 2}
-  steeringSpeed: 3
+  steeringSpeed: {fileID: 11400000, guid: fc39e5708eae22d10a55004f72a06df4, type: 2}
 --- !u!114 &1039451815972288932
 MonoBehaviour:
   m_ObjectHideFlags: 0
