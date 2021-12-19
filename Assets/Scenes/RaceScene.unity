@@ -490,6 +490,8 @@ GameObject:
   - component: {fileID: 371023077}
   - component: {fileID: 371023076}
   - component: {fileID: 371023078}
+  - component: {fileID: 371023079}
+  - component: {fileID: 371023080}
   m_Layer: 0
   m_Name: Racetrack
   m_TagString: Untagged
@@ -539,9 +541,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   frequency: 8
+  spawnObstacleEvent: {fileID: 11400000, guid: 1d3739c7ef2b0a6ee8a10c3a49037b04, type: 2}
+--- !u!114 &371023079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 371023075}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c2397d6511fe491cb0b711b9ba59b93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   obstaclePrefab: {fileID: 5970084270931678675, guid: 09b1695d4170315e292d35f2b3ad95bd, type: 3}
-  maxX: -1.7
-  minX: 1.7
+  spawnObstacleEvent: {fileID: 11400000, guid: 1d3739c7ef2b0a6ee8a10c3a49037b04, type: 2}
+--- !u!114 &371023080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 371023075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56972dd3ad68bb9b4aa0428172c85b54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  forgiveness: 0.75
+  gapWidthMax: 3
+  gapWidthMin: 0.6
+  obstaclePrefab: {fileID: 5970084270931678675, guid: 09b1695d4170315e292d35f2b3ad95bd, type: 3}
+  playerBaseSpeed: {fileID: 11400000, guid: f6a5b8daa9579bfaaad82f53d7e94808, type: 2}
+  playerPosition: {fileID: 11400000, guid: 144a6fd6b1023949bb9c680ed3637f8b, type: 2}
+  playerSteeringSpeed: {fileID: 11400000, guid: fc39e5708eae22d10a55004f72a06df4, type: 2}
+  spawnObstacleEvent: {fileID: 11400000, guid: 1d3739c7ef2b0a6ee8a10c3a49037b04, type: 2}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

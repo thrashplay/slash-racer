@@ -4,19 +4,22 @@ using UnityEngine;
 
 public class GapObstacleSpawner : MonoBehaviour, ISpawnObstacleListener
 {
-    public float gapWidth = 2F;
+    // reduce the maximum gap distance by this much, reducing the perfect play required to move
+    // between the most distant gaps
+    public float forgiveness = 0.75F;
+
+    public float gapWidthMax = 1.9F;
+    public float gapWidthMin = 0.6F;
 
     public GameObject obstaclePrefab;
+
+    public IntegerValue playerBaseSpeed;
+    
+    public Vector2Value playerPosition;
 
     public IntegerValue playerSteeringSpeed;
 
     public SpawnObstacleEvent spawnObstacleEvent;
-
-    // center x coordinate of the last gap
-    private float _lastX;
-
-    // y coordinate of the last gap
-    private float _lastY;
 
     private IRacetrack _racetrack;
 
@@ -29,10 +32,17 @@ public class GapObstacleSpawner : MonoBehaviour, ISpawnObstacleListener
 
     public void OnSpawnObstacle()
     { 
+        var gapWidth = Random.Range(gapWidthMin, gapWidthMax);
+
         var y = _racetrack.Y;
-        var maxDeltaX = (y - _lastY) * playerSteeringSpeed.Value;
-        var minX = Mathf.Max(_racetrack.Left, _lastX - maxDeltaX);
-        var maxX = Mathf.Min(_racetrack.Right, _lastX + maxDeltaX);
+        var distanceTilNextObstacle = y - playerPosition.Value.y;
+        var timeTilNextObstacle = distanceTilNextObstacle / playerBaseSpeed.Value;
+        var maxDeltaX = (timeTilNextObstacle * playerSteeringSpeed.Value) - forgiveness;
+        var minX = Mathf.Max(_racetrack.Left, playerPosition.Value.x - maxDeltaX);
+        var maxX = Mathf.Min(_racetrack.Right, playerPosition.Value.x + maxDeltaX);
+        
+        Debug.Log("maxDelta:" + maxDeltaX + ", ttno" + timeTilNextObstacle + ", x:" + playerPosition.Value.x + ", minx:" + minX + ", maxx:" + maxX);
+
         var gapLeft = Random.Range(minX, maxX - gapWidth);
         var gapRight = gapLeft + gapWidth;
 
@@ -56,8 +66,5 @@ public class GapObstacleSpawner : MonoBehaviour, ISpawnObstacleListener
 
         var defaultScale = obstacle.transform.localScale;
         obstacle.transform.localScale = new Vector3(width, defaultScale.y, defaultScale.z);
-
-        _lastX = centerX;
-        _lastY = y;
     }
 }
