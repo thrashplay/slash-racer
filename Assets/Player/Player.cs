@@ -11,17 +11,17 @@ public enum SteeringDirection
 
 public class Player : MonoBehaviour, IPlayerController
 {
-    public float DrivingSpeed = 13;
+    public IntegerValue BaseDrivingSpeed;
 
     public PlayerCrashedEvent playerCrashedEvent;
 
+    public Vector2Value position;
+
     public IntegerValue score;
 
-    public float steeringSpeed = 1;
+    public IntegerValue steeringSpeed;
 
     public SteeringDirection Direction { get; set; }
-
-    private Vector2 _position;
 
     private Rigidbody2D _rigidbody;
 
@@ -29,7 +29,7 @@ public class Player : MonoBehaviour, IPlayerController
     {
         Direction = SteeringDirection.Straight;
         _rigidbody = GetComponent<Rigidbody2D>();
-        _position = _rigidbody.position;
+        position.Value = _rigidbody.position;
     }
 
     void Update()
@@ -42,9 +42,9 @@ public class Player : MonoBehaviour, IPlayerController
 
     void FixedUpdate() 
     {
-        var delta = Time.deltaTime * new Vector2(GetVelocityX(), DrivingSpeed); 
-        _position += delta;
-        _rigidbody.MovePosition(_position);
+        var delta = Time.deltaTime * new Vector2(GetVelocityX(), BaseDrivingSpeed.Value); 
+        position.Value += delta;
+        _rigidbody.MovePosition(position.Value);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -66,8 +66,8 @@ public class Player : MonoBehaviour, IPlayerController
     {
         return Direction switch
         {
-            SteeringDirection.Left => -steeringSpeed,
-            SteeringDirection.Right => steeringSpeed,
+            SteeringDirection.Left => -steeringSpeed.Value,
+            SteeringDirection.Right => steeringSpeed.Value,
             _ => 0,
         };
     }

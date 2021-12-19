@@ -12,8 +12,10 @@ GameObject:
   - component: {fileID: 1039451815972288939}
   - component: {fileID: 1039451815972288938}
   - component: {fileID: 1039451815972288936}
-  - component: {fileID: 1039451815972288932}
   - component: {fileID: 1039451815972288943}
+  - component: {fileID: 1039451815972288932}
+  - component: {fileID: 2630829343425750009}
+  - component: {fileID: 643094085135617373}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -123,6 +125,23 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 2}
   m_Direction: 0
+--- !u!114 &1039451815972288943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1039451815972288942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ee7436f4267989ea90bc70cbb49359c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BaseDrivingSpeed: {fileID: 11400000, guid: f6a5b8daa9579bfaaad82f53d7e94808, type: 2}
+  playerCrashedEvent: {fileID: 11400000, guid: b8db27aa2a2aecd2f9ae84a704da056b, type: 2}
+  position: {fileID: 11400000, guid: 144a6fd6b1023949bb9c680ed3637f8b, type: 2}
+  score: {fileID: 11400000, guid: 57b3529ac9b9f90f9bd26c5c0402fe69, type: 2}
+  steeringSpeed: {fileID: 11400000, guid: fc39e5708eae22d10a55004f72a06df4, type: 2}
 --- !u!114 &1039451815972288932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,19 +155,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPaused: {fileID: 11400000, guid: 6bbf8fcc2eca96b4eb8ecc6870c0fcb9, type: 2}
---- !u!114 &1039451815972288943
+--- !u!114 &2630829343425750009
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1039451815972288942}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ee7436f4267989ea90bc70cbb49359c, type: 3}
+  m_Script: {fileID: 11500000, guid: 5e2730bf4315fb5a3861e04b6829a4e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DrivingSpeed: 8
-  playerCrashedEvent: {fileID: 11400000, guid: b8db27aa2a2aecd2f9ae84a704da056b, type: 2}
-  score: {fileID: 11400000, guid: 57b3529ac9b9f90f9bd26c5c0402fe69, type: 2}
-  steeringSpeed: 3
+  deadZoneSize: 0.3
+  isPaused: {fileID: 11400000, guid: 6bbf8fcc2eca96b4eb8ecc6870c0fcb9, type: 2}
+--- !u!114 &643094085135617373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1039451815972288942}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 408a90934e9811efc94ba677956b6cfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPaused: {fileID: 11400000, guid: 6bbf8fcc2eca96b4eb8ecc6870c0fcb9, type: 2}
+  laneWidth: 0.6

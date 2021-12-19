@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class MousePointerSteeringInputController : MonoBehaviour
 {
+    // size of the region around the player where they will drive straight
+    public float deadZoneSize = 1F;
+
     public BooleanValue isPaused;
 
     private IPlayerController _player;
@@ -26,10 +29,15 @@ public class MousePointerSteeringInputController : MonoBehaviour
             Input.mousePosition
         );
 
-        if (mousePosition.x < _player.Position.x)
+        if (Mathf.Abs(mousePosition.x - _player.Position.x) <= (deadZoneSize / 2F))
+        {
+            _player.SteerStraight();
+        }
+        else if (mousePosition.x < _player.Position.x)
         {
             _player.SteerLeft();
-        } else 
+        } 
+        else 
         {
             _player.SteerRight();
         }

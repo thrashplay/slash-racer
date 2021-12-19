@@ -2,7 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Racetrack : MonoBehaviour
+public interface IRacetrack
+{
+    // y position of the current end of the track
+    float Y { get; }
+
+    // x coordinate of the left coordinate of the track, at position Y
+    float Left { get; }
+
+    // x coordinate of the right coordinate of the track, at position Y
+    float Right { get; }
+}
+
+public class Racetrack : MonoBehaviour, IRacetrack
 {
     public float WallSegmentHeight = 0.5F;
 
@@ -13,10 +25,6 @@ public class Racetrack : MonoBehaviour
     private float _currentLeft;
 
     private float _currentRight;
-
-    private float _targetLeft;
-
-    private float _targetRight;
 
     // y-coordinate for the highest segment of track that has been created
     private float _trackTop;
@@ -45,6 +53,21 @@ public class Racetrack : MonoBehaviour
             CreateWall(_currentLeft, y, color);
             CreateWall(_currentRight, y, color);
         }
+    }
+
+    public float Y
+    {
+        get { return _trackTop; }
+    }
+
+    public float Left
+    {
+        get { return _currentLeft; }
+    }
+
+    public float Right
+    {
+        get { return _currentRight; }
     }
 
     private void CreateWall(float x, float y, Color color)
