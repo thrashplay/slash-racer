@@ -512,7 +512,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WallSegmentHeight: 0.5
-  WallSegmentWidth: 0.1
+  WallSegmentWidth: 0.2
   WallSegmentPrefab: {fileID: 1870975777136622504, guid: 62a02d4eb66ae7a74b690aea5dca4fca, type: 3}
 --- !u!4 &371023077
 Transform:
