@@ -8,7 +8,7 @@ public class GapObstacleSpawner : MonoBehaviour, ISpawnObstacleListener
     // between the most distant gaps
     public float forgiveness = 0.75F;
 
-    public float gapWidthMax = 1.9F;
+    public float gapWidthMax = 2F;
     public float gapWidthMin = 0.6F;
 
     public GameObject obstaclePrefab;
@@ -40,8 +40,6 @@ public class GapObstacleSpawner : MonoBehaviour, ISpawnObstacleListener
         var maxDeltaX = (timeTilNextObstacle * playerSteeringSpeed.Value) - forgiveness;
         var minX = Mathf.Max(_racetrack.Left, playerPosition.Value.x - maxDeltaX);
         var maxX = Mathf.Min(_racetrack.Right, playerPosition.Value.x + maxDeltaX);
-        
-        Debug.Log("maxDelta:" + maxDeltaX + ", ttno" + timeTilNextObstacle + ", x:" + playerPosition.Value.x + ", minx:" + minX + ", maxx:" + maxX);
 
         var gapLeft = Random.Range(minX, maxX - gapWidth);
         var gapRight = gapLeft + gapWidth;

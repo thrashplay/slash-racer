@@ -3,6 +3,9 @@ using UnityEngine;
 // Interface defining behaviors exposed by the player object
 public interface IPlayerController
 {
+  // sets whether the player is accelerating or not
+  bool IsAccelerating { get; set; }
+
   // Direction the player is currently heading
   SteeringDirection Direction { get; set; }
 

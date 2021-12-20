@@ -4,28 +4,36 @@ using UnityEngine;
 
 public class ObstacleTrigger : MonoBehaviour
 {
-    public float frequency = 10;
+    // minimize vertical space between obstacles
+    public float frequencyMin = 6;
+    // maximize vertical space between obstacles
+    public float frequencyMax = 20;
 
     public SpawnObstacleEvent spawnObstacleEvent;
 
-    private float _lastSpawn;
+    private float _nextSpawn;
 
     private IRacetrack _racetrack;
 
     // Start is called before the first frame update
     void Start()
     {
-        _lastSpawn = 0;
         _racetrack = GetComponent<IRacetrack>();
+        UpdateNextSpawn();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if ((_racetrack.Y - _lastSpawn) >= frequency)
+        if (_racetrack.Y >= _nextSpawn)
         {
-            _lastSpawn = _racetrack.Y;
+            UpdateNextSpawn();
             spawnObstacleEvent.Emit();
         }
+    }
+
+    private void UpdateNextSpawn()
+    {
+        _nextSpawn = _racetrack.Y + Random.Range(frequencyMin, frequencyMax);
     }
 }

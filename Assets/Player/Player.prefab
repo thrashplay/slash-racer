@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 1039451815972288932}
   - component: {fileID: 2630829343425750009}
   - component: {fileID: 643094085135617373}
+  - component: {fileID: 2682759078220595401}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -137,7 +138,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ee7436f4267989ea90bc70cbb49359c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  acceleration: 0.5
   BaseDrivingSpeed: {fileID: 11400000, guid: f6a5b8daa9579bfaaad82f53d7e94808, type: 2}
+  maxSpeed: 14
   playerCrashedEvent: {fileID: 11400000, guid: b8db27aa2a2aecd2f9ae84a704da056b, type: 2}
   position: {fileID: 11400000, guid: 144a6fd6b1023949bb9c680ed3637f8b, type: 2}
   score: {fileID: 11400000, guid: 57b3529ac9b9f90f9bd26c5c0402fe69, type: 2}
@@ -149,7 +152,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1039451815972288942}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a2c87c993c69558f6a0500bafa13fb6e, type: 3}
   m_Name: 
@@ -183,3 +186,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPaused: {fileID: 11400000, guid: 6bbf8fcc2eca96b4eb8ecc6870c0fcb9, type: 2}
   laneWidth: 0.6
+--- !u!114 &2682759078220595401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1039451815972288942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c89224ef25a1b62ea68bdd3d65979a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPaused: {fileID: 11400000, guid: 6bbf8fcc2eca96b4eb8ecc6870c0fcb9, type: 2}
+  keyBindings: {fileID: 11400000, guid: 3768c2b7485d3245aa876bce00fb7cbd, type: 2}

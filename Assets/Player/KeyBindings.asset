@@ -9,7 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5354f1e3b22b8bb6db3c992ffd636f20, type: 3}
-  m_Name: SteeringSpeed
+  m_Script: {fileID: 11500000, guid: 78aff10c1f0356da59bb5b02f2af3f3e, type: 3}
+  m_Name: KeyBindings
   m_EditorClassIdentifier: 
-  Value: 5
+  SteerLeft: 6100000073000000
+  SteerRight: 6400000066000000
