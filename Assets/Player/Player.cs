@@ -11,7 +11,11 @@ public enum SteeringDirection
 
 public class Player : MonoBehaviour, IPlayerController
 {
+    public float acceleration = 0.25F;
+
     public IntegerValue BaseDrivingSpeed;
+
+    public float maxSpeed = 24F;
 
     public PlayerCrashedEvent playerCrashedEvent;
 
@@ -23,10 +27,16 @@ public class Player : MonoBehaviour, IPlayerController
 
     public SteeringDirection Direction { get; set; }
 
+    private float _currentSpeed;
+
+    private float _rawScore;
+
     private Rigidbody2D _rigidbody;
 
     void Start()
     {
+        _currentSpeed = BaseDrivingSpeed.Value;
+  
         Direction = SteeringDirection.Straight;
         _rigidbody = GetComponent<Rigidbody2D>();
         position.Value = _rigidbody.position;
@@ -36,15 +46,22 @@ public class Player : MonoBehaviour, IPlayerController
     {
         var position = transform.position;
         Camera.main.transform.position = new Vector3(0, position.y + 2.5F, -10);
-    
-        score.Value = (int) position.y;
     }
 
     void FixedUpdate() 
     {
-        var delta = Time.deltaTime * new Vector2(GetVelocityX(), BaseDrivingSpeed.Value); 
+        _currentSpeed = IsAccelerating
+            ? Mathf.Min(maxSpeed, _currentSpeed + acceleration)
+            : BaseDrivingSpeed.Value;
+
+        var delta = Time.deltaTime * new Vector2(GetVelocityX(), _currentSpeed); 
         position.Value += delta;
         _rigidbody.MovePosition(position.Value);
+
+        _rawScore += IsAccelerating ? 8 : 1;
+        var increment = Mathf.FloorToInt(_rawScore / 25);
+        _rawScore -= 25 * increment;
+        score.Value += increment;
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -81,6 +98,8 @@ public class Player : MonoBehaviour, IPlayerController
     //
     // IPlayerController
     //
+
+    public bool IsAccelerating { get; set; }
 
     public Vector2 Position
     {

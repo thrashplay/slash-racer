@@ -35,6 +35,7 @@ public class KeyboardInputController : MonoBehaviour
             _player.SteerStraight();
         }
 
+        _player.IsAccelerating = IsPressing(keyBindings.Accelerate);
     }
 
     private bool IsPressing(KeyCode[] keyCodes)
