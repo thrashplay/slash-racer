@@ -18,8 +18,6 @@ public class Racetrack : MonoBehaviour, IRacetrack
 {
     public float WallSegmentHeight = 0.5F;
 
-    public float WallSegmentWidth = 0.1F;
-
     public GameObject WallSegmentPrefab;
 
     private float _currentLeft;
@@ -41,17 +39,15 @@ public class Racetrack : MonoBehaviour, IRacetrack
 
     void Update()
     {
-        float top = Camera.main.ScreenToWorldPoint(new Vector3(Camera.main.pixelWidth, Camera.main.pixelHeight, 0)).y;
+        float top = Camera.main.ScreenToWorldPoint(new Vector3(Camera.main.pixelWidth, Camera.main.pixelHeight, 0)).y + 2;
 
         while (_trackTop < top)
         {
-            Color color = Random.ColorHSV();
-
             _trackTop += WallSegmentHeight;
             float y = _trackTop - (WallSegmentHeight / 2);
 
-            CreateWall(_currentLeft, y, color);
-            CreateWall(_currentRight, y, color);
+            CreateWall(_currentLeft, y);
+            CreateWall(_currentRight, y);
         }
     }
 
@@ -70,11 +66,9 @@ public class Racetrack : MonoBehaviour, IRacetrack
         get { return _currentRight; }
     }
 
-    private void CreateWall(float x, float y, Color color)
+    private void CreateWall(float x, float y)
     {
         GameObject wall = Instantiate(WallSegmentPrefab);
-        wall.GetComponent<SpriteRenderer>().color = color;
         wall.transform.position = new Vector3(x, y, 0);
-        wall.transform.localScale = new Vector3(WallSegmentWidth, WallSegmentHeight, 1);
     }
 }
