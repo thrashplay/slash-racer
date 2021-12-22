@@ -139,6 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: 9b4742f35bd772c2286491d5a8a9d756, type: 2}
+  gameConfig: {fileID: 11400000, guid: 3fc8b19dd4e7fb1e5bf936fc9b874779, type: 2}
   playerCrashedEvent: {fileID: 11400000, guid: b8db27aa2a2aecd2f9ae84a704da056b, type: 2}
   position: {fileID: 11400000, guid: 144a6fd6b1023949bb9c680ed3637f8b, type: 2}
   score: {fileID: 11400000, guid: 57b3529ac9b9f90f9bd26c5c0402fe69, type: 2}

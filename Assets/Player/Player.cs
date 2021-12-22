@@ -15,6 +15,8 @@ public class Player : MonoBehaviour, IPlayerController
 
     public PlayerConfig config;
 
+    public GameConfig gameConfig;
+
     public PlayerCrashedEvent playerCrashedEvent;
 
     public Vector2Value position;
@@ -55,7 +57,7 @@ public class Player : MonoBehaviour, IPlayerController
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Wall"))
+        if (gameConfig.WallsAreFatal && collision.gameObject.CompareTag("Wall"))
         {
             playerCrashedEvent.Emit(this);
             Destroy(gameObject);
@@ -75,7 +77,10 @@ public class Player : MonoBehaviour, IPlayerController
                 break;
 
             default:
-                SteerTowardsStraight();
+                if (gameConfig.SteeringAutoStraighten)
+                {
+                    SteerTowardsStraight();
+                }
                 break;
         }
 

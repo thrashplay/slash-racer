@@ -13,4 +13,10 @@ public class GameConfig : ScriptableObject
 
     // number of lives the player starts with
     public int StartingLives = 1;
+
+    // if true, the player will straighten out automatically when not steering
+    public bool SteeringAutoStraighten = true;
+
+    // if true, colliding with a wall will destroy the player
+    public bool WallsAreFatal = true;
 }

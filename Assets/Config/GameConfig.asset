@@ -15,3 +15,5 @@ MonoBehaviour:
   InitialTimeLimit: 10
   StarBonusTime: 2
   StartingLives: 1
+  SteeringAutoStraighten: 1
+  WallsAreFatal: 0
