@@ -55,13 +55,14 @@ public class Player : MonoBehaviour, IPlayerController
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Obstacle"))
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            _currentRotation = 0;
+        } 
+        else if (collision.gameObject.CompareTag("Obstacle"))
         {
             // destroy any obstacles the player crashes into
-            if (collision.gameObject.CompareTag("Obstacle"))
-            {
-                Destroy(collision.gameObject);
-            }
+            Destroy(collision.gameObject);
 
             // handle the crash            
             OnCrashed();
@@ -100,19 +101,19 @@ public class Player : MonoBehaviour, IPlayerController
             _currentRotation = config.SteeringLimit;
         }
 
-        transform.rotation = Quaternion.identity;
-        transform.Rotate(Vector3.back, _currentRotation);
+        _rigidbody.transform.rotation = Quaternion.identity;
+        _rigidbody.transform.Rotate(Vector3.back, _currentRotation);
     }
 
     private void SteerTowardsStraight()
     {
         if (_currentRotation < 0)
         {
-            _currentRotation += config.SteeringSpeed;
+            _currentRotation = Mathf.Min(0, _currentRotation + config.SteeringSpeed);
         }
         else if (_currentRotation > 0)
         {
-            _currentRotation -= config.SteeringSpeed;
+            _currentRotation = Mathf.Max(0, _currentRotation - config.SteeringSpeed);
         }
     }
 
