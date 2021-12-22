@@ -11,20 +11,26 @@ public class UiManager : MonoBehaviour
 
     public IntegerValue score;
 
+    public IntegerValue timeRemaining;
+
     public Text livesText;
 
     public Text scoreText;
+
+    public Text timeRemainingText;
 
     void Start()
     {
         livesText.text = "Lives: " + lives.Value;
         scoreText.text = "Score: " + score.Value;
+        timeRemainingText.text = "Time: " + timeRemaining.Value;
     }
 
     void Update()
     {
         livesText.text = "Lives: " + lives.Value;
         scoreText.text = "Score: " + score.Value;
+        timeRemainingText.text = "Time: " + timeRemaining.Value;
     }
 
     // show an announcement in the center of the screen

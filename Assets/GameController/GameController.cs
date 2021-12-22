@@ -5,21 +5,23 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour, IPlayerCrashedListener
 {
-    public int initialPlayerLives = 3;
+    public GameConfig gameConfig;
 
     public BooleanValue isPaused;
 
-    public IntegerValue playerLives;
+    public IntegerValue extraLivesRemaining;
 
     public PlayerCrashedEvent playerCrashedEvent;
 
     public IntegerValue score;
 
+    public IntegerValue time;
+
     private IPlayerRespawner _respawner;
 
     void Start()
     {
-        playerLives.Value = initialPlayerLives;
+        extraLivesRemaining.Value = gameConfig.StartingLives - 1;
         score.Value = 0;
 
         playerCrashedEvent.AddListener(this);
@@ -30,6 +32,15 @@ public class GameController : MonoBehaviour, IPlayerCrashedListener
         // start unpaused by default
         Time.timeScale = 1;
         isPaused.Value = false;
+    }
+
+    void Update()
+    {
+        if (time.Value <= 0)
+        {
+            time.Value = 0;
+            OnGameOver();
+        }
     }
 
     public void OnPause()
@@ -62,8 +73,8 @@ public class GameController : MonoBehaviour, IPlayerCrashedListener
 
     public void OnPlayerCrashed(Player player)
     {
-        playerLives.Value -= 1;
-        if (playerLives.Value >= 0)
+        extraLivesRemaining.Value -= 1;
+        if (extraLivesRemaining.Value >= 0)
         {
             _respawner.Respawn(player.Position.y);
         }

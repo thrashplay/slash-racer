@@ -11,11 +11,11 @@ public enum SteeringDirection
 
 public class Player : MonoBehaviour, IPlayerController
 {
-    public float acceleration = 0.25F;
+    private static readonly int FIXED_UPDATES_PER_SECOND = 50;
 
-    public IntegerValue BaseDrivingSpeed;
+    public PlayerConfig config;
 
-    public float maxSpeed = 24F;
+    public GameConfig gameConfig;
 
     public PlayerCrashedEvent playerCrashedEvent;
 
@@ -23,9 +23,9 @@ public class Player : MonoBehaviour, IPlayerController
 
     public IntegerValue score;
 
-    public IntegerValue steeringSpeed;
-
     public SteeringDirection Direction { get; set; }
+
+    private int _currentRotation = 0;
 
     private float _currentSpeed;
 
@@ -35,7 +35,7 @@ public class Player : MonoBehaviour, IPlayerController
 
     void Start()
     {
-        _currentSpeed = BaseDrivingSpeed.Value;
+        _currentSpeed = config.BaseSpeed;
   
         Direction = SteeringDirection.Straight;
         _rigidbody = GetComponent<Rigidbody2D>();
@@ -50,49 +50,84 @@ public class Player : MonoBehaviour, IPlayerController
 
     void FixedUpdate() 
     {
-        _currentSpeed = IsAccelerating
-            ? Mathf.Min(maxSpeed, _currentSpeed + acceleration)
-            : BaseDrivingSpeed.Value;
-
-        var delta = Time.deltaTime * new Vector2(GetVelocityX(), _currentSpeed); 
-        position.Value += delta;
-        _rigidbody.MovePosition(position.Value);
-
-        _rawScore += IsAccelerating ? 8 : 1;
-        var increment = Mathf.FloorToInt(_rawScore / 25);
-        _rawScore -= 25 * increment;
-        score.Value += increment;
+        UpdateRotation();
+        UpdateVelocity();
+        UpdateScore();
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Obstacle"))
+        if (gameConfig.WallsAreFatal && collision.gameObject.CompareTag("Wall"))
         {
-            // destroy any obstacles the player crashes into
-            if (collision.gameObject.CompareTag("Obstacle"))
-            {
-                Destroy(collision.gameObject);
-            }
+            playerCrashedEvent.Emit(this);
+            Destroy(gameObject);
+        } 
+    }
 
-            // handle the crash            
-            OnCrashed();
+    private void UpdateRotation()
+    {
+        switch (Direction)
+        {
+            case SteeringDirection.Left:
+                _currentRotation -= config.SteeringSpeed;
+                break;
+
+            case SteeringDirection.Right:
+                _currentRotation += config.SteeringSpeed;
+                break;
+
+            default:
+                if (gameConfig.SteeringAutoStraighten)
+                {
+                    SteerTowardsStraight();
+                }
+                break;
+        }
+
+        if (_currentRotation < -config.SteeringLimit)
+        {
+            _currentRotation = -config.SteeringLimit;
+        }
+        else if (_currentRotation > config.SteeringLimit)
+        {
+            _currentRotation = config.SteeringLimit;
+        }
+
+        _rigidbody.transform.rotation = Quaternion.identity;
+        _rigidbody.transform.Rotate(Vector3.back, _currentRotation);
+    }
+
+    private void SteerTowardsStraight()
+    {
+        if (_currentRotation < 0)
+        {
+            _currentRotation = Mathf.Min(0, _currentRotation + config.SteeringSpeed);
+        }
+        else if (_currentRotation > 0)
+        {
+            _currentRotation = Mathf.Max(0, _currentRotation - config.SteeringSpeed);
         }
     }
 
-    private float GetVelocityX()
+    private void UpdateVelocity()
     {
-        return Direction switch
-        {
-            SteeringDirection.Left => -steeringSpeed.Value,
-            SteeringDirection.Right => steeringSpeed.Value,
-            _ => 0,
-        };
+        _currentSpeed = IsAccelerating
+            ? Mathf.Min(config.MaxSpeed, _currentSpeed + config.Acceleration)
+            : config.BaseSpeed;
+
+        var rotation = _rigidbody.rotation * Mathf.Deg2Rad;
+        var x = -Mathf.Sin(rotation) * _currentSpeed;
+        var y = Mathf.Cos(rotation) * _currentSpeed;
+
+        _rigidbody.velocity = FIXED_UPDATES_PER_SECOND * Time.deltaTime * new Vector2(x, y);
     }
 
-    private void OnCrashed()
+    private void UpdateScore()
     {
-        playerCrashedEvent.Emit(this);
-        Destroy(gameObject);
+        _rawScore += IsAccelerating ? 8 : 1;
+        var increment = Mathf.FloorToInt(_rawScore / 25);
+        _rawScore -= 25 * increment;
+        score.Value += increment;
     }
 
     //
@@ -111,30 +146,16 @@ public class Player : MonoBehaviour, IPlayerController
 
     public void SteerLeft()
     {
-        if (Direction != SteeringDirection.Left)
-        {
-            Direction = SteeringDirection.Left;
-            transform.rotation = Quaternion.identity;
-            transform.Rotate(Vector3.back, -22);
-        }
+        Direction = SteeringDirection.Left;
     }
 
     public void SteerRight()
     {
-        if (Direction != SteeringDirection.Right)
-        {
-            Direction = SteeringDirection.Right;
-            transform.rotation = Quaternion.identity;
-            transform.Rotate(Vector3.back, 22);
-        }
+        Direction = SteeringDirection.Right;
     }
 
     public void SteerStraight()
     {
-        if (Direction != SteeringDirection.Straight)
-        {
-            Direction = SteeringDirection.Straight;
-            transform.rotation = Quaternion.identity;
-        }
+        Direction = SteeringDirection.Straight;
     }
 }

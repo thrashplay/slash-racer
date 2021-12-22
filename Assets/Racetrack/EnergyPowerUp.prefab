@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: -4285547635145897328}
   - component: {fileID: 7703195956427241128}
   - component: {fileID: 1516844826987941738}
+  - component: {fileID: 7625697157316688759}
   m_Layer: 0
-  m_Name: Obstacle
+  m_Name: EnergyPowerUp
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -144,3 +145,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b3758ed087cf4174b1a86a3c0c9d25c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7625697157316688759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5970084270931678675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1667dcc9ecf66157bbda9c906423df1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameConfig: {fileID: 11400000, guid: 3fc8b19dd4e7fb1e5bf936fc9b874779, type: 2}
+  time: {fileID: 11400000, guid: 67f5080fcfd5d021da2f1250072bd8a8, type: 2}
