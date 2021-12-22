@@ -15,6 +15,8 @@ public class GameController : MonoBehaviour, IPlayerCrashedListener
 
     public IntegerValue score;
 
+    public IntegerValue time;
+
     private IPlayerRespawner _respawner;
 
     void Start()
@@ -30,6 +32,15 @@ public class GameController : MonoBehaviour, IPlayerCrashedListener
         // start unpaused by default
         Time.timeScale = 1;
         isPaused.Value = false;
+    }
+
+    void Update()
+    {
+        if (time.Value <= 0)
+        {
+            time.Value = 0;
+            OnGameOver();
+        }
     }
 
     public void OnPause()

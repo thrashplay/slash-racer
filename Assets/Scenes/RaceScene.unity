@@ -268,6 +268,7 @@ MonoBehaviour:
   extraLivesRemaining: {fileID: 11400000, guid: abdfcc44983f8f5948dd494151cb9eee, type: 2}
   playerCrashedEvent: {fileID: 11400000, guid: b8db27aa2a2aecd2f9ae84a704da056b, type: 2}
   score: {fileID: 11400000, guid: 57b3529ac9b9f90f9bd26c5c0402fe69, type: 2}
+  time: {fileID: 11400000, guid: 67f5080fcfd5d021da2f1250072bd8a8, type: 2}
 --- !u!114 &121091852
 MonoBehaviour:
   m_ObjectHideFlags: 0
