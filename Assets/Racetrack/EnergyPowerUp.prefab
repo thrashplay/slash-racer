@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -4285547635145897328}
   - component: {fileID: 7703195956427241128}
   - component: {fileID: 1516844826987941738}
+  - component: {fileID: -3029167633070068567}
   - component: {fileID: 7625697157316688759}
   m_Layer: 0
   m_Name: EnergyPowerUp
@@ -30,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 5970084270931678675}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -94,19 +95,19 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5970084270931678675}
-  m_BodyType: 2
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 6
 --- !u!61 &7703195956427241128
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -145,6 +146,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b3758ed087cf4174b1a86a3c0c9d25c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-3029167633070068567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5970084270931678675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 792eeb9262f1f87978cbc29521cf449f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  config: {fileID: 11400000, guid: 34f3402c767d505aa8cb66a2ab3cddac, type: 2}
 --- !u!114 &7625697157316688759
 MonoBehaviour:
   m_ObjectHideFlags: 0
