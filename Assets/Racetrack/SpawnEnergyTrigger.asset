@@ -10,5 +10,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: abef545bf624e55d98a97fc712bd43fd, type: 3}
-  m_Name: SpawnObstacleEvent
+  m_Name: SpawnEnergyTrigger
   m_EditorClassIdentifier: 

@@ -63,9 +63,6 @@ public class Player : MonoBehaviour, IPlayerController
         {
             // destroy any obstacles the player crashes into
             Destroy(collision.gameObject);
-
-            // handle the crash            
-            OnCrashed();
         }
     }
 

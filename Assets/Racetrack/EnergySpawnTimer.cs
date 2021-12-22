@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObstacleTrigger : MonoBehaviour
+public class EnergySpawnTimer : MonoBehaviour
 {
     // minimize vertical space between obstacles
     public float frequencyMin = 6;
     // maximize vertical space between obstacles
     public float frequencyMax = 20;
 
-    public SpawnObstacleEvent spawnObstacleEvent;
+    public Trigger trigger;
 
     private float _nextSpawn;
 
@@ -28,7 +28,7 @@ public class ObstacleTrigger : MonoBehaviour
         if (_racetrack.Y >= _nextSpawn)
         {
             UpdateNextSpawn();
-            spawnObstacleEvent.Emit();
+            trigger.Emit();
         }
     }
 

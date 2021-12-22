@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour, IPlayerCrashedListener
 {
-    public PlayerConfig playerConfig;
+    public GameConfig gameConfig;
 
     public BooleanValue isPaused;
 
@@ -19,7 +19,7 @@ public class GameController : MonoBehaviour, IPlayerCrashedListener
 
     void Start()
     {
-        extraLivesRemaining.Value = playerConfig.StartingLives - 1;
+        extraLivesRemaining.Value = gameConfig.StartingLives - 1;
         score.Value = 0;
 
         playerCrashedEvent.AddListener(this);

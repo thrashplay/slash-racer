@@ -13,9 +13,6 @@ public class PlayerConfig : ScriptableObject
     // player's maximum speed in meters/second
     public float MaxSpeed = 14;
 
-    // number of lives the player starts with
-    public int StartingLives = 3;
-
     // maximum angle, in degrees, that the player can steer away from straight ahead
     public int SteeringLimit = 15;
 

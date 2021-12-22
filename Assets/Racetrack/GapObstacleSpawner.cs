@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GapObstacleSpawner : MonoBehaviour, ISpawnObstacleListener
+public class GapObstacleSpawner : MonoBehaviour, ITriggerListener
 {
     // reduce the maximum gap distance by this much, reducing the perfect play required to move
     // between the most distant gaps
@@ -19,7 +19,7 @@ public class GapObstacleSpawner : MonoBehaviour, ISpawnObstacleListener
 
     public IntegerValue playerSteeringSpeed;
 
-    public SpawnObstacleEvent spawnObstacleEvent;
+    public Trigger spawnObstacleEvent;
 
     private IRacetrack _racetrack;
 
@@ -30,7 +30,7 @@ public class GapObstacleSpawner : MonoBehaviour, ISpawnObstacleListener
         spawnObstacleEvent.AddListener(this);
     }
 
-    public void OnSpawnObstacle()
+    public void OnTriggered()
     { 
         var gapWidth = Random.Range(gapWidthMin, gapWidthMax);
 

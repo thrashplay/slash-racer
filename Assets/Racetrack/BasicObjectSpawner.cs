@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicObstacleSpawner : MonoBehaviour, ISpawnObstacleListener
+public class BasicObjectSpawner : MonoBehaviour, ITriggerListener
 {
-    public GameObject obstaclePrefab;
+    public GameObject objectPrefab;
 
-    public SpawnObstacleEvent spawnObstacleEvent;
+    public Trigger trigger;
 
     private IRacetrack _racetrack;
 
@@ -14,12 +14,12 @@ public class BasicObstacleSpawner : MonoBehaviour, ISpawnObstacleListener
     void Start()
     {
         _racetrack = GetComponent<IRacetrack>();
-        spawnObstacleEvent.AddListener(this);
+        trigger.AddListener(this);
     }
 
-    public void OnSpawnObstacle()
+    public void OnTriggered()
     {
         var position = new Vector3(Random.Range(_racetrack.Left, _racetrack.Right), _racetrack.Y, 0);
-        Instantiate(obstaclePrefab, position, Quaternion.identity);
+        Instantiate(objectPrefab, position, Quaternion.identity);
     }
 }
