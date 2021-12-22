@@ -6,9 +6,6 @@ public interface IPlayerController
   // sets whether the player is accelerating or not
   bool IsAccelerating { get; set; }
 
-  // Direction the player is currently heading
-  SteeringDirection Direction { get; set; }
-
   Vector2 Position { get; }
 
   // Called when the player should begin steering left
@@ -19,4 +16,7 @@ public interface IPlayerController
 
     // Called when the player should begin driving straight ahead
   void SteerStraight();
+
+  // steer the player to the specified angle; returns the actual angle set
+  int SteerTo(int angle);
 }

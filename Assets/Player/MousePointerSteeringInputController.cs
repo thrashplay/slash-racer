@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class MousePointerSteeringInputController : MonoBehaviour
 {
-    // size of the region around the player where they will drive straight
-    public float deadZoneSize = 1F;
-
     public BooleanValue isPaused;
+
+    private int _heading;
 
     private IPlayerController _player;
 
@@ -17,29 +16,26 @@ public class MousePointerSteeringInputController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (isPaused.Value)
         {
             return;
         }
 
-        // get the mouse click position, in world units
-        var mousePosition = Camera.main.ScreenToWorldPoint(
-            Input.mousePosition
-        );
+        var mouse = GetMouse();
 
-        if (Mathf.Abs(mousePosition.x - _player.Position.x) <= (deadZoneSize / 2F))
+        if (mouse.y > _player.Position.y)
         {
-            _player.SteerStraight();
-        }
-        else if (mousePosition.x < _player.Position.x)
-        {
-            _player.SteerLeft();
-        } 
-        else 
-        {
-            _player.SteerRight();
-        }
+            var input = (int) Input.GetAxis("Mouse X");
+            _heading = _player.SteerTo(_heading += input);
+         }
+    }
+
+    private Vector2 GetMouse()
+    {
+        // get the mouse position, in world units
+        var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        return mousePosition;
     }
 }
