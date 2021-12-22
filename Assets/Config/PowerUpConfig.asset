@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40245e5900edce9708a8204de209b003, type: 3}
   m_Name: PowerUpConfig
   m_EditorClassIdentifier: 
+  MinRotation: -360
+  MaxRotation: 360
   MinSpeed: 2
   MaxSpeed: 6
