@@ -13,6 +13,7 @@ public class EnergyPowerUpCollisionHandler : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             time.Value += gameConfig.StarBonusTime;
+            Destroy(gameObject);
         }
     }
 }

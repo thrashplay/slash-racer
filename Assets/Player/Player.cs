@@ -57,19 +57,9 @@ public class Player : MonoBehaviour, IPlayerController
     {
         if (collision.gameObject.CompareTag("Wall"))
         {
-            _currentRotation = 0;
+            playerCrashedEvent.Emit(this);
+            Destroy(gameObject);
         } 
-        else if (collision.gameObject.CompareTag("Obstacle"))
-        {
-            // destroy any obstacles the player crashes into
-            Destroy(collision.gameObject);
-        }
-    }
-
-    private void OnCrashed()
-    {
-        playerCrashedEvent.Emit(this);
-        Destroy(gameObject);
     }
 
     private void UpdateRotation()
