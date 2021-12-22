@@ -97,14 +97,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1039451815972288942}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -138,13 +138,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ee7436f4267989ea90bc70cbb49359c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceleration: 0.5
-  BaseDrivingSpeed: {fileID: 11400000, guid: f6a5b8daa9579bfaaad82f53d7e94808, type: 2}
-  maxSpeed: 14
+  config: {fileID: 11400000, guid: 9b4742f35bd772c2286491d5a8a9d756, type: 2}
   playerCrashedEvent: {fileID: 11400000, guid: b8db27aa2a2aecd2f9ae84a704da056b, type: 2}
   position: {fileID: 11400000, guid: 144a6fd6b1023949bb9c680ed3637f8b, type: 2}
   score: {fileID: 11400000, guid: 57b3529ac9b9f90f9bd26c5c0402fe69, type: 2}
-  steeringSpeed: {fileID: 11400000, guid: fc39e5708eae22d10a55004f72a06df4, type: 2}
 --- !u!114 &1039451815972288932
 MonoBehaviour:
   m_ObjectHideFlags: 0

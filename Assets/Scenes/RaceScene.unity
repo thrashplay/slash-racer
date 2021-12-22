@@ -262,9 +262,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4c2a86f021a934a0b6afe1bf0faf9ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialPlayerLives: 2
+  playerConfig: {fileID: 11400000, guid: 9b4742f35bd772c2286491d5a8a9d756, type: 2}
   isPaused: {fileID: 11400000, guid: 6bbf8fcc2eca96b4eb8ecc6870c0fcb9, type: 2}
-  playerLives: {fileID: 11400000, guid: 42bfaa84df5dccbae99d174f5ef6ad16, type: 2}
+  extraLivesRemaining: {fileID: 11400000, guid: abdfcc44983f8f5948dd494151cb9eee, type: 2}
   playerCrashedEvent: {fileID: 11400000, guid: b8db27aa2a2aecd2f9ae84a704da056b, type: 2}
   score: {fileID: 11400000, guid: 57b3529ac9b9f90f9bd26c5c0402fe69, type: 2}
 --- !u!1 &244153480
@@ -512,7 +512,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WallSegmentHeight: 0.5
-  WallSegmentWidth: 0.2
   WallSegmentPrefab: {fileID: 1870975777136622504, guid: 62a02d4eb66ae7a74b690aea5dca4fca, type: 3}
 --- !u!4 &371023077
 Transform:
@@ -1146,7 +1145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadingTextPrefab: {fileID: 2249148350416378131, guid: 2c9dc9b843ed38914833fc084dfb4221, type: 3}
-  lives: {fileID: 11400000, guid: 42bfaa84df5dccbae99d174f5ef6ad16, type: 2}
+  lives: {fileID: 11400000, guid: abdfcc44983f8f5948dd494151cb9eee, type: 2}
   score: {fileID: 11400000, guid: 57b3529ac9b9f90f9bd26c5c0402fe69, type: 2}
   livesText: {fileID: 17549522}
   scoreText: {fileID: 522679566}
