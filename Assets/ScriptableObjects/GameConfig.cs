@@ -8,6 +8,9 @@ public class GameConfig : ScriptableObject
     // starting time before game over
     public int InitialTimeLimit = 30;
 
+    // how wide the track is when the game starts
+    public int InitialTrackWidth = 8;
+
     // how much additional time is granted by a star
     public int StarBonusTime = 3;
 

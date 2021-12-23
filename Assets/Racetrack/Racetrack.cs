@@ -16,6 +16,8 @@ public interface IRacetrack
 
 public class Racetrack : MonoBehaviour, IRacetrack
 {
+    public GameConfig gameConfig;
+
     public float WallSegmentHeight = 0.5F;
 
     public GameObject WallSegmentPrefab;
@@ -29,9 +31,8 @@ public class Racetrack : MonoBehaviour, IRacetrack
 
     void Start()
     {
-
-        _currentLeft = -2;
-        _currentRight = 2;
+        _currentLeft = -gameConfig.InitialTrackWidth / 2F;
+        _currentRight = gameConfig.InitialTrackWidth / 2F;
 
         // initialize the top of our track to be just outside the bottom edge of the scene
         _trackTop = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).y;

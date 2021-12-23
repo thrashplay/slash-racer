@@ -2,13 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum SteeringDirection
-{
-    Left,
-    Right,
-    Straight
-}
-
 public class Player : MonoBehaviour, IPlayerController
 {
     private static readonly int FIXED_UPDATES_PER_SECOND = 50;
@@ -23,8 +16,6 @@ public class Player : MonoBehaviour, IPlayerController
 
     public IntegerValue score;
 
-    public SteeringDirection Direction { get; set; }
-
     private int _currentRotation = 0;
 
     private float _currentSpeed;
@@ -37,7 +28,6 @@ public class Player : MonoBehaviour, IPlayerController
     {
         _currentSpeed = config.BaseSpeed;
   
-        Direction = SteeringDirection.Straight;
         _rigidbody = GetComponent<Rigidbody2D>();
         position.Value = _rigidbody.position;
     }
@@ -66,47 +56,8 @@ public class Player : MonoBehaviour, IPlayerController
 
     private void UpdateRotation()
     {
-        switch (Direction)
-        {
-            case SteeringDirection.Left:
-                _currentRotation -= config.SteeringSpeed;
-                break;
-
-            case SteeringDirection.Right:
-                _currentRotation += config.SteeringSpeed;
-                break;
-
-            default:
-                if (gameConfig.SteeringAutoStraighten)
-                {
-                    SteerTowardsStraight();
-                }
-                break;
-        }
-
-        if (_currentRotation < -config.SteeringLimit)
-        {
-            _currentRotation = -config.SteeringLimit;
-        }
-        else if (_currentRotation > config.SteeringLimit)
-        {
-            _currentRotation = config.SteeringLimit;
-        }
-
         _rigidbody.transform.rotation = Quaternion.identity;
         _rigidbody.transform.Rotate(Vector3.back, _currentRotation);
-    }
-
-    private void SteerTowardsStraight()
-    {
-        if (_currentRotation < 0)
-        {
-            _currentRotation = Mathf.Min(0, _currentRotation + config.SteeringSpeed);
-        }
-        else if (_currentRotation > 0)
-        {
-            _currentRotation = Mathf.Max(0, _currentRotation - config.SteeringSpeed);
-        }
     }
 
     private void UpdateVelocity()
@@ -146,16 +97,42 @@ public class Player : MonoBehaviour, IPlayerController
 
     public void SteerLeft()
     {
-        Direction = SteeringDirection.Left;
+        SteerTo(_currentRotation - config.SteeringSpeed);
     }
 
     public void SteerRight()
     {
-        Direction = SteeringDirection.Right;
+        SteerTo(_currentRotation + config.SteeringSpeed);
     }
 
     public void SteerStraight()
     {
-        Direction = SteeringDirection.Straight;
+        if (gameConfig.SteeringAutoStraighten)
+        {
+            if (_currentRotation < 0)
+            {
+                SteerTo(Mathf.Min(0, _currentRotation + config.SteeringSpeed));
+            }
+            else if (_currentRotation > 0)
+            {
+                SteerTo(Mathf.Max(0, _currentRotation - config.SteeringSpeed));
+            }
+        }
+    }
+
+    public int SteerTo(int angle)
+    {
+        _currentRotation = angle;
+        
+        if (_currentRotation < -config.SteeringLimit)
+        {
+            _currentRotation = -config.SteeringLimit;
+        }
+        else if (_currentRotation > config.SteeringLimit)
+        {
+            _currentRotation = config.SteeringLimit;
+        }
+
+        return _currentRotation;
     }
 }

@@ -17,7 +17,7 @@ public class KeyboardInputController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (isPaused.Value)
         {

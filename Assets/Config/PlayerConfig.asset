@@ -15,6 +15,5 @@ MonoBehaviour:
   Acceleration: 0.325
   BaseSpeed: 7
   MaxSpeed: 14
-  StartingLives: 3
-  SteeringLimit: 40
-  SteeringSpeed: 4
+  SteeringLimit: 60
+  SteeringSpeed: 6

@@ -9,12 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fddc27e440df73a0d993dfd188b5fb43, type: 3}
-  m_Name: GameConfig
+  m_Script: {fileID: 11500000, guid: 40245e5900edce9708a8204de209b003, type: 3}
+  m_Name: PowerUpConfig
   m_EditorClassIdentifier: 
-  InitialTimeLimit: 20
-  InitialTrackWidth: 7
-  StarBonusTime: 2
-  StartingLives: 1
-  SteeringAutoStraighten: 1
-  WallsAreFatal: 1
+  MinRotation: -360
+  MaxRotation: 360
+  MinSpeed: 2
+  MaxSpeed: 6
