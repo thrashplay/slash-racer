@@ -54,6 +54,17 @@ public class Player : MonoBehaviour, IPlayerController
         } 
     }
 
+    // adjusts the player speed to keep forward movement constant, if enabled
+    private float CalculateAdjustedSpeed(float baseSpeed, float rotation)
+    {
+        if (!gameConfig.KeepForwardSpeedConstant)
+        {
+            return baseSpeed;
+        }
+
+        return baseSpeed / Mathf.Cos(rotation);
+    }
+
     private void UpdateRotation()
     {
         _rigidbody.transform.rotation = Quaternion.identity;
@@ -67,8 +78,10 @@ public class Player : MonoBehaviour, IPlayerController
             : config.BaseSpeed;
 
         var rotation = _rigidbody.rotation * Mathf.Deg2Rad;
-        var x = -Mathf.Sin(rotation) * _currentSpeed;
-        var y = Mathf.Cos(rotation) * _currentSpeed;
+        var adjustedSpeed = CalculateAdjustedSpeed(_currentSpeed, rotation);
+
+        var x = -Mathf.Sin(rotation) * adjustedSpeed;
+        var y = Mathf.Cos(rotation) * adjustedSpeed;
 
         _rigidbody.velocity = FIXED_UPDATES_PER_SECOND * Time.deltaTime * new Vector2(x, y);
     }
