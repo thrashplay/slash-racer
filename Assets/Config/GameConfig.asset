@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fddc27e440df73a0d993dfd188b5fb43, type: 3}
   m_Name: GameConfig
   m_EditorClassIdentifier: 
-  InitialTimeLimit: 10
+  InitialTimeLimit: 20
+  InitialTrackWidth: 7
   StarBonusTime: 2
   StartingLives: 1
   SteeringAutoStraighten: 1
-  WallsAreFatal: 0
+  WallsAreFatal: 1

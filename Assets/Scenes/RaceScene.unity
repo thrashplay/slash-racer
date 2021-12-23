@@ -526,6 +526,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31f84f98b37a7e6f9a83e432824be3df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameConfig: {fileID: 11400000, guid: 3fc8b19dd4e7fb1e5bf936fc9b874779, type: 2}
   WallSegmentHeight: 0.5
   WallSegmentPrefab: {fileID: 1870975777136622504, guid: 62a02d4eb66ae7a74b690aea5dca4fca, type: 3}
 --- !u!4 &371023077
