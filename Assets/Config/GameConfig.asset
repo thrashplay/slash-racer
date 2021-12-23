@@ -16,5 +16,6 @@ MonoBehaviour:
   InitialTrackWidth: 7
   StarBonusTime: 2
   StartingLives: 1
-  SteeringAutoStraighten: 1
+  KeepForwardSpeedConstant: 1
+  SteeringAutoStraighten: 0
   WallsAreFatal: 1

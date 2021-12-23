@@ -17,6 +17,9 @@ public class GameConfig : ScriptableObject
     // number of lives the player starts with
     public int StartingLives = 1;
 
+    // if true, speed will be adjusted to keep forward movement constant
+    public bool KeepForwardSpeedConstant = true;
+
     // if true, the player will straighten out automatically when not steering
     public bool SteeringAutoStraighten = true;
 
