@@ -28,7 +28,7 @@ public class ObjectMovementController : MonoBehaviour
 
     void Start()
     {
-        _direction = Random.Range(0, 1) < 0.5 ? Direction.Left : Direction.Right;
+        _direction = Random.Range(0, 2) == 0 ? Direction.Left : Direction.Right;
         _rotationSpeed = (int) Random.Range(config.MinRotation, config.MaxRotation);
         _speed = Random.Range(config.MinSpeed, config.MaxSpeed);
 
