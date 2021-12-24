@@ -19,7 +19,8 @@ public class BasicObjectSpawner : MonoBehaviour, ITriggerListener
 
     public void OnTriggered()
     {
-        var position = new Vector3(Random.Range(_racetrack.Left, _racetrack.Right), _racetrack.Y, 0);
+        var objectWidth = objectPrefab.transform.localScale.x;
+        var position = new Vector3(Random.Range(_racetrack.Left + objectWidth, _racetrack.Right - objectWidth), _racetrack.Y, 0);
         Instantiate(objectPrefab, position, Quaternion.identity);
     }
 }
