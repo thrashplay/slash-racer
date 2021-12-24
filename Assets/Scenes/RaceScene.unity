@@ -286,7 +286,6 @@ MonoBehaviour:
   gameOver: {fileID: 11400000, guid: 3c78ca3e38448cc86b3b70d7aa03f899, type: 2}
   soundManager: {fileID: 1219098706}
   time: {fileID: 11400000, guid: 67f5080fcfd5d021da2f1250072bd8a8, type: 2}
-  uiManager: {fileID: 1489404216}
 --- !u!1 &244153480
 GameObject:
   m_ObjectHideFlags: 0
@@ -1602,7 +1601,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: f86b4bd99a837f8cfbfa66473fc04143, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.48
   m_Pitch: 1
   Loop: 0
   Mute: 0
