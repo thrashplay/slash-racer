@@ -7,6 +7,8 @@ public class GameController : MonoBehaviour, IPlayerCrashedListener
 {
     public GameConfig gameConfig;
 
+    public BooleanValue gameOver;
+
     public BooleanValue isPaused;
 
     public IntegerValue extraLivesRemaining;
@@ -14,6 +16,8 @@ public class GameController : MonoBehaviour, IPlayerCrashedListener
     public PlayerCrashedEvent playerCrashedEvent;
 
     public IntegerValue score;
+
+    public SoundManager soundManager;
 
     public IntegerValue time;
 
@@ -32,11 +36,13 @@ public class GameController : MonoBehaviour, IPlayerCrashedListener
         // start unpaused by default
         Time.timeScale = 1;
         isPaused.Value = false;
+
+        gameOver.Value = false;
     }
 
     void Update()
     {
-        if (time.Value <= 0)
+        if (time.Value < 1)
         {
             time.Value = 0;
             OnGameOver();
@@ -64,6 +70,19 @@ public class GameController : MonoBehaviour, IPlayerCrashedListener
     // called when the player quits the game
     public void OnGameOver()
     {
+        if (!gameOver.Value)
+        {
+            Destroy(GameObject.FindGameObjectWithTag("Player"));
+            soundManager.PlayEngine(EngineSound.None);
+            soundManager.PlayExplosion();
+            Invoke(nameof(EndScene), gameConfig.DelayAfterDeath);
+
+            gameOver.Value = true;
+        }
+    }
+
+    private void EndScene()
+    {
         SceneManager.LoadScene("GameOverScene");
     }
 
@@ -73,14 +92,6 @@ public class GameController : MonoBehaviour, IPlayerCrashedListener
 
     public void OnPlayerCrashed(Player player)
     {
-        extraLivesRemaining.Value -= 1;
-        if (extraLivesRemaining.Value >= 0)
-        {
-            _respawner.Respawn(player.Position.y);
-        }
-        else
-        {
-            OnGameOver();
-        }
+        OnGameOver();
     }
 }

@@ -172,4 +172,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameConfig: {fileID: 11400000, guid: 3fc8b19dd4e7fb1e5bf936fc9b874779, type: 2}
+  soundManager: {fileID: 0}
   time: {fileID: 11400000, guid: 67f5080fcfd5d021da2f1250072bd8a8, type: 2}

@@ -5,6 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "GameConfig", menuName = "ScriptableObjects/GameConfig", order = 1)]
 public class GameConfig : ScriptableObject
 {
+    // delay in seconds after the player dies before showing game over
+    public float DelayAfterDeath = 2F;
+
     // starting time before game over
     public int InitialTimeLimit = 30;
 

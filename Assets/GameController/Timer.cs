@@ -6,6 +6,10 @@ public class Timer : MonoBehaviour
 {
     public GameConfig gameConfig;
 
+    public BooleanValue gameOver;
+
+    public SoundManager soundManager;
+
     public IntegerValue time;
 
     private float _elapsed;
@@ -17,11 +21,25 @@ public class Timer : MonoBehaviour
 
     void FixedUpdate()
     {
-        _elapsed += Time.fixedDeltaTime;
-        while (_elapsed > 1)
+        if (gameOver.Value)
         {
-            time.Value--;
-            _elapsed -= 1;
+            return;
+        }
+
+        _elapsed += Time.fixedDeltaTime;
+
+        if (_elapsed > 1)
+        {
+            while (_elapsed > 1)
+            {
+                time.Value--;
+                _elapsed -= 1;
+            }
+
+            if (time.Value <= 3 && time.Value > 0)
+            {
+                soundManager.PlayLowTimeWarning();
+            }
         }
     }
 }
