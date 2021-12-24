@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e912c41feca1645cb5de96d7275712f, type: 3}
+  m_Name: SoundConfig
+  m_EditorClassIdentifier: 
+  engineStage1Start: 2.544
+  engineStage1End: 4.717
+  engineStage2Start: 4.9440002
+  engineStage2End: 7.1169996
+  engineStage3Start: 7.344
+  engineStage3End: 9.517
+  engineStage4Start: 9.744
+  engineStage4End: 11.917
+  volumeExplosion: 0.1

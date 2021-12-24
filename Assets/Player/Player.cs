@@ -24,12 +24,16 @@ public class Player : MonoBehaviour, IPlayerController
 
     private Rigidbody2D _rigidbody;
 
+    private SoundManager _soundManager;
+
     void Start()
     {
         _currentSpeed = config.BaseSpeed;
   
         _rigidbody = GetComponent<Rigidbody2D>();
         position.Value = _rigidbody.position;
+
+        _soundManager = GameObject.Find("Sound Manager").GetComponent<SoundManager>();
     }
 
     void Update()
@@ -50,7 +54,6 @@ public class Player : MonoBehaviour, IPlayerController
         if (gameConfig.WallsAreFatal && collision.gameObject.CompareTag("Wall"))
         {
             playerCrashedEvent.Emit(this);
-            Destroy(gameObject);
         } 
     }
 
@@ -76,6 +79,8 @@ public class Player : MonoBehaviour, IPlayerController
         _currentSpeed = IsAccelerating
             ? Mathf.Min(config.MaxSpeed, _currentSpeed + config.Acceleration)
             : config.BaseSpeed;
+
+        _soundManager.PlayEngine(IsAccelerating ? EngineSound.High : EngineSound.Low);
 
         var rotation = _rigidbody.rotation * Mathf.Deg2Rad;
         var adjustedSpeed = CalculateAdjustedSpeed(_currentSpeed, rotation);
