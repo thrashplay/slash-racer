@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnergyPowerUpCollisionHandler : MonoBehaviour
+public class StarCollisionHandler : MonoBehaviour
 {
     public GameConfig gameConfig;
+
+    public IntegerValue score;
 
     public IntegerValue time;
 
@@ -21,7 +23,12 @@ public class EnergyPowerUpCollisionHandler : MonoBehaviour
         {
             _soundManager.PlayItemPickedUp();
 
-            time.Value += gameConfig.StarBonusTime;
+            score.Value += gameConfig.StarPointValue;
+            if (gameConfig.TimeLimitEnabled)
+            {
+                time.Value += gameConfig.StarBonusTime;
+            }
+
             Destroy(gameObject);
         }
     }

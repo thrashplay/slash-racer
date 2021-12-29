@@ -7,6 +7,7 @@ TagManager:
   - Obstacle
   - Wall
   - ShowOnPaused
+  - Power Up
   layers:
   - Default
   - TransparentFX

@@ -51,7 +51,11 @@ public class Player : MonoBehaviour, IPlayerController
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (gameConfig.WallsAreFatal && collision.gameObject.CompareTag("Wall"))
+        if 
+        (
+            collision.gameObject.CompareTag("Obstacle") || 
+            (gameConfig.WallsAreFatal && collision.gameObject.CompareTag("Wall"))
+        )
         {
             playerCrashedEvent.Emit(this);
         } 
@@ -93,10 +97,13 @@ public class Player : MonoBehaviour, IPlayerController
 
     private void UpdateScore()
     {
-        _rawScore += IsAccelerating ? 8 : 1;
-        var increment = Mathf.FloorToInt(_rawScore / 25);
-        _rawScore -= 25 * increment;
-        score.Value += increment;
+        if (gameConfig.ScoreFromMovementEnabled)
+        {
+            _rawScore += IsAccelerating ? 8 : 1;
+            var increment = Mathf.FloorToInt(_rawScore / 25);
+            _rawScore -= 25 * increment;
+            score.Value += increment;
+        }
     }
 
     //

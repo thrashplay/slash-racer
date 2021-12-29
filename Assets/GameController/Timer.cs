@@ -21,6 +21,11 @@ public class Timer : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (!gameConfig.TimeLimitEnabled)
+        {
+            return;
+        }
+
         if (gameOver.Value)
         {
             return;

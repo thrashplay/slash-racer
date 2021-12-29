@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "PowerUpConfig", menuName = "ScriptableObjects/PowerUpConfig", order = 1)]
-public class PowerUpConfig : ScriptableObject
+[CreateAssetMenu(fileName = "StarConfig", menuName = "ScriptableObjects/StarConfig", order = 1)]
+public class StarConfig : SpawnableConfig
 {
     // minimum rotational speed of power-ups, in degrees/second
     public float MinRotation = 0;
