@@ -510,6 +510,8 @@ GameObject:
   - component: {fileID: 371023076}
   - component: {fileID: 371023078}
   - component: {fileID: 371023079}
+  - component: {fileID: 371023081}
+  - component: {fileID: 371023080}
   m_Layer: 0
   m_Name: Racetrack
   m_TagString: Untagged
@@ -575,6 +577,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPrefab: {fileID: 5970084270931678675, guid: 09b1695d4170315e292d35f2b3ad95bd, type: 3}
   trigger: {fileID: 11400000, guid: 0f54f645cb4d4f19dbf731f37297117e, type: 2}
+--- !u!114 &371023080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 371023075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c2397d6511fe491cb0b711b9ba59b93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectPrefab: {fileID: 2344027283171296191, guid: 8ca8d1a1f1c937011a81f8c2039bf697, type: 3}
+  trigger: {fileID: 11400000, guid: daa59f33ec9fd55eaac52e3e06256007, type: 2}
+--- !u!114 &371023081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 371023075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd026295e510cb701b69f6c36d4eea49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frequencyMin: 3
+  frequencyMax: 8
+  trigger: {fileID: 11400000, guid: daa59f33ec9fd55eaac52e3e06256007, type: 2}
 --- !u!1 &473285830
 GameObject:
   m_ObjectHideFlags: 0

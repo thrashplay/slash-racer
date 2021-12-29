@@ -51,7 +51,11 @@ public class Player : MonoBehaviour, IPlayerController
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (gameConfig.WallsAreFatal && collision.gameObject.CompareTag("Wall"))
+        if 
+        (
+            collision.gameObject.CompareTag("Obstacle") || 
+            (gameConfig.WallsAreFatal && collision.gameObject.CompareTag("Wall"))
+        )
         {
             playerCrashedEvent.Emit(this);
         } 

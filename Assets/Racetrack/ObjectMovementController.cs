@@ -48,7 +48,7 @@ public class ObjectMovementController : MonoBehaviour
             return;
         }
 
-        if (collision.gameObject.CompareTag("Wall"))
+        if (collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Obstacle"))
         {
             _direction = _direction == Direction.Left ? Direction.Right : Direction.Left;
             _rigidbody.velocity = GetVelocity();

@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 7625697157316688759}
   m_Layer: 0
   m_Name: EnergyPowerUp
-  m_TagString: Obstacle
+  m_TagString: Power Up
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -172,5 +172,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameConfig: {fileID: 11400000, guid: 3fc8b19dd4e7fb1e5bf936fc9b874779, type: 2}
-  soundManager: {fileID: 0}
   time: {fileID: 11400000, guid: 67f5080fcfd5d021da2f1250072bd8a8, type: 2}
