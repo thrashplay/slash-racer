@@ -1881,6 +1881,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9c0959505209fd1c9a02c1d2fa7dc14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameConfig: {fileID: 11400000, guid: 3fc8b19dd4e7fb1e5bf936fc9b874779, type: 2}
   fadingTextPrefab: {fileID: 2249148350416378131, guid: 2c9dc9b843ed38914833fc084dfb4221, type: 3}
   lives: {fileID: 11400000, guid: abdfcc44983f8f5948dd494151cb9eee, type: 2}
   score: {fileID: 11400000, guid: 57b3529ac9b9f90f9bd26c5c0402fe69, type: 2}

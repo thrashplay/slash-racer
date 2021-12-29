@@ -97,10 +97,13 @@ public class Player : MonoBehaviour, IPlayerController
 
     private void UpdateScore()
     {
-        _rawScore += IsAccelerating ? 8 : 1;
-        var increment = Mathf.FloorToInt(_rawScore / 25);
-        _rawScore -= 25 * increment;
-        score.Value += increment;
+        if (gameConfig.ScoreFromMovementEnabled)
+        {
+            _rawScore += IsAccelerating ? 8 : 1;
+            var increment = Mathf.FloorToInt(_rawScore / 25);
+            _rawScore -= 25 * increment;
+            score.Value += increment;
+        }
     }
 
     //

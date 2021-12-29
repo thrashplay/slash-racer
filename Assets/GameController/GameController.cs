@@ -42,7 +42,7 @@ public class GameController : MonoBehaviour, IPlayerCrashedListener
 
     void Update()
     {
-        if (time.Value < 1)
+        if (gameConfig.TimeLimitEnabled && time.Value < 1)
         {
             time.Value = 0;
             OnGameOver();

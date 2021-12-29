@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class UiManager : MonoBehaviour
 {
+    public GameConfig gameConfig;
+
     public GameObject fadingTextPrefab;
 
     public IntegerValue lives;
@@ -31,6 +33,8 @@ public class UiManager : MonoBehaviour
         livesText.text = "Lives: " + lives.Value;
         scoreText.text = "Score: " + score.Value;
         timeRemainingText.text = "Time: " + timeRemaining.Value;
+
+        timeRemainingText.gameObject.SetActive(gameConfig.TimeLimitEnabled);
     }
 
     // show an announcement in the center of the screen

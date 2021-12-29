@@ -12,10 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fddc27e440df73a0d993dfd188b5fb43, type: 3}
   m_Name: GameConfig
   m_EditorClassIdentifier: 
+  DelayAfterDeath: 2
+  TimeLimitEnabled: 0
   InitialTimeLimit: 20
   InitialTrackWidth: 7
+  ScoreFromMovementEnabled: 0
+  StarPointValue: 1
   StarBonusTime: 2
   StartingLives: 1
-  KeepForwardSpeedConstant: 1
+  KeepForwardSpeedConstant: 0
   SteeringAutoStraighten: 0
   WallsAreFatal: 1

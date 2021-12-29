@@ -8,13 +8,21 @@ public class GameConfig : ScriptableObject
     // delay in seconds after the player dies before showing game over
     public float DelayAfterDeath = 2F;
 
+    // if true, the game enforces the time limit mechanic
+    public bool TimeLimitEnabled = true;
+
     // starting time before game over
     public int InitialTimeLimit = 30;
 
     // how wide the track is when the game starts
     public int InitialTrackWidth = 8;
 
-    // how much additional time is granted by a star
+    // whether the user gains points from driving or not
+    public bool ScoreFromMovementEnabled = true;
+
+    // number of points awarded for collecting a star
+    public int StarPointValue = 10;
+        // how much additional time is granted by a star
     public int StarBonusTime = 3;
 
     // number of lives the player starts with
