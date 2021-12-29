@@ -13,7 +13,7 @@ public class ObjectMovementController : MonoBehaviour
     // minimum time, in seconds, between collisions with a wall
     private static readonly float COLLISION_COOLDOWN = 0.1F;
 
-    public PowerUpConfig config;
+    public StarConfig config;
 
     // game time in seconds before which collisions are ignored
     private float _ignoreCollisionsUntil = 0;
