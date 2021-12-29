@@ -1,10 +1,8 @@
-﻿{
+{
     "files.exclude":
     {
         "**/.DS_Store":true,
         "**/.git":true,
-        "**/.gitignore":true,
-        "**/.gitmodules":true,
         "**/*.booproj":true,
         "**/*.pidb":true,
         "**/*.suo":true,
@@ -13,21 +11,6 @@
         "**/*.unityproj":true,
         "**/*.dll":true,
         "**/*.exe":true,
-        "**/*.pdf":true,
-        "**/*.mid":true,
-        "**/*.midi":true,
-        "**/*.wav":true,
-        "**/*.gif":true,
-        "**/*.ico":true,
-        "**/*.jpg":true,
-        "**/*.jpeg":true,
-        "**/*.png":true,
-        "**/*.psd":true,
-        "**/*.tga":true,
-        "**/*.tif":true,
-        "**/*.tiff":true,
-        "**/*.3ds":true,
-        "**/*.3DS":true,
         "**/*.fbx":true,
         "**/*.FBX":true,
         "**/*.lxo":true,
